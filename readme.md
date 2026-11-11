@@ -26,7 +26,7 @@ Berdasarkan karakteristiknya, sistem ini dikategorikan sebagai sistem antrian *m
 
 Berikut adalah diagram model sistem antrian kasir supermarket:
 
-![Diagram Model] (diagram_model.png)
+![Diagram Model](diagram_model.png)
 
 ### Komponen-Komponen Model Sistem Antrian
 
@@ -57,7 +57,7 @@ Untuk perhitungan distribusi waktu tunggu dan waktu pelayanan pada `Distribusi_D
 | **Panjang Kelas Interval (`Panjang Kelas` / $p$)** | 2,496 | 1,161 |
 
 
-![Distribusi Data] (distribusi_data.png)
+![Distribusi Data](distribusi_data.png)
 
 
 ## D. Rata-Rata Waktu Tunggu dan Pelayanan Objek dalam Sistem
@@ -119,22 +119,6 @@ Dengan penerapan *single queue* (satu antrian terpusat untuk seluruh 5 kasir), r
 ├── requirements.txt                      # Daftar dependensi library Python
 └── README.md                             # Dokumentasi lengkap proyek
 ```
-
-## Cara Menjalankan Proyek
-
-1. **Instalasi Dependensi**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-   *(Catatan: Untuk mengekspor animasi simulasi ke file `.mp4`, pastikan `ffmpeg` dan `imagemagick` telah terinstal).*
-
-2. **Menjalankan Analisis Distribusi Data (`Distribusi_Data.ipynb`)**:
-   - Pastikan path file CSV mengarah ke dataset observasi (`HASIL_DATA_PENGAMATAN_DES.csv` atau `data_antrian.csv`).
-   - Jalankan seluruh sel untuk menghasilkan `data_antrian_hasil.csv`, statistik interval kelas, serta histogram distribusi waktu tunggu dan pelayanan.
-
-3. **Menjalankan Simulasi & Eksperimen (`G1_simulation_supermarket.ipynb`)**:
-   - Pastikan variabel `DATA_CSV` mengarah ke `HASIL_DATA_PENGAMATAN_DES.csv`.
-   - Jalankan seluruh sel untuk mengeksekusi simulasi *real-data replay*, membuat video animasi `real_simulation_supermarket_queue.mp4`, dan menjalankan ketiga skenario eksperimen (`DES_experiment_results_all.csv`).
 
   
 - **Daftar Pustaka**:
