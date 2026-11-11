@@ -27,37 +27,7 @@ Berdasarkan karakteristiknya, sistem ini dikategorikan sebagai sistem antrian *m
 Berikut adalah diagram model sistem antrian kasir supermarket:
 
 
-
-```mermaid
-flowchart LR
-    subgraph T1["Tahap 1: Kedatangan Pelanggan"]
-        A(["Pelanggan Datang (Acak / Poisson)"])
-    end
-    subgraph T2["Tahap 2: Antrian (Per Kasir)"]
-        Q1["Antrian Kasir 1"]
-        Q2["Antrian Kasir 2"]
-        Q3["Antrian Kasir 3"]
-        Q4["Antrian Kasir 4"]
-        Q5["Antrian Kasir 5"]
-    end
-    subgraph T3["Tahap 3: Pelayanan (Eksponensial)"]
-        S1["Kasir 1 (Server 1)"]
-        S2["Kasir 2 (Server 2)"]
-        S3["Kasir 3 (Server 3)"]
-        S4["Kasir 4 (Server 4)"]
-        S5["Kasir 5 (Server 5)"]
-    end
-    subgraph T4["Tahap 4: Keberangkatan"]
-        D(["Pelanggan Keluar Sistem"])
-    end
-
-    A --> Q1 & Q2 & Q3 & Q4 & Q5
-    Q1 --> S1 --> D
-    Q2 --> S2 --> D
-    Q3 --> S3 --> D
-    Q4 --> S4 --> D
-    Q5 --> S5 --> D
-```
+[diagram_model.png]
 
 ### Komponen-Komponen Model Sistem Antrian
 
@@ -87,6 +57,8 @@ Untuk perhitungan distribusi waktu tunggu dan waktu pelayanan pada `Distribusi_D
 | **Banyak Kelas Interval (`Kelas` / $k$)** | 8 | 8 |
 | **Panjang Kelas Interval (`Panjang Kelas` / $p$)** | 2,496 | 1,161 |
 
+
+[distribusi_data.png]
 
 
 ## D. Rata-Rata Waktu Tunggu dan Pelayanan Objek dalam Sistem
