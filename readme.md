@@ -27,6 +27,7 @@ Berdasarkan karakteristiknya, sistem ini dikategorikan sebagai sistem antrian *m
 Berikut adalah diagram model sistem antrian kasir supermarket:
 
 
+```markdown
 [diagram_model.png]
 
 ### Komponen-Komponen Model Sistem Antrian
@@ -57,7 +58,7 @@ Untuk perhitungan distribusi waktu tunggu dan waktu pelayanan pada `Distribusi_D
 | **Banyak Kelas Interval (`Kelas` / $k$)** | 8 | 8 |
 | **Panjang Kelas Interval (`Panjang Kelas` / $p$)** | 2,496 | 1,161 |
 
-
+```markdown
 [distribusi_data.png]
 
 
