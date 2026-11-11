@@ -1,10 +1,10 @@
-# Pemodelan dan Simulasi Sistem Antrian Pelayanan Pelanggan pada Lotte Mart Mall Panakkukang (M/M/5)
+# Pemodelan dan Simulasi Sistem Antrian Pelayanan Pelanggan pada Supermarket (M/M/5)
 
-Repositori ini berisi implementasi analisis distribusi data observasi dan **Discrete-Event Simulation (DES)** menggunakan **SimPy** untuk memodelkan sistem antrian pelayanan pembayaran di kasir **Lotte Mart Hypermarket, Mall Panakkukang, Makassar**.
+Repositori ini berisi implementasi analisis distribusi data observasi dan **Discrete-Event Simulation (DES)** menggunakan **SimPy** untuk memodelkan sistem antrian pelayanan pembayaran di area kasir **Supermarekt**.
 
 ## A. Penjelasan Umum Terkait Sistem yang Dimodelkan
 
-Sistem antrian yang dimodelkan dalam proyek ini adalah sistem antrian pembayaran di kasir Lotte Mart Hypermarket yang terletak di Mall Panakkukang, Makassar. Lotte Mart merupakan salah satu pusat perbelanjaan modern yang menyediakan berbagai kebutuhan rumah tangga. Seperti halnya pusat perbelanjaan besar lainnya, salah satu proses penting yang terjadi di dalamnya adalah proses pembayaran di kasir. Oleh karena itu, sistem antrian kasir memegang peran penting dalam menentukan kenyamanan dan efisiensi pelayanan di Lotte Mart.
+Sistem antrian yang dimodelkan dalam proyek ini adalah sistem antrian pembayaran di di kasir sebuah supermarket. Supermarket ini merupakan salah satu pusat perbelanjaan modern yang menyediakan berbagai kebutuhan rumah tangga. Seperti halnya pusat perbelanjaan besar lainnya, salah satu proses penting yang terjadi di dalamnya adalah proses pembayaran di kasir. Oleh karena itu, sistem antrian kasir memegang peran penting dalam menentukan kenyamanan dan efisiensi pelayanan di supermarket.
 
 Sistem antrian dapat diartikan sebagai suatu proses di mana pelanggan datang untuk memperoleh pelayanan, menunggu jika tidak segera dilayani, dan meninggalkan fasilitas pelayanan (sistem) setelah selesai dilayani ([Hanikmah dkk., 2019](https://doi.org/10.26714/jsunimus.7.2.2019.%2525p)). Ilmu yang mempelajari proses dan perilaku antrian dikenal sebagai teori antrian (*queueing theory*). Tujuan utama dari sistem antrian adalah untuk meningkatkan efisiensi, mengurangi waktu tunggu, dan memberikan pelayanan yang lebih optimal kepada pelanggan ([Ibrahim dkk., 2025](https://doi.org/10.62383/algoritma.v3i2.431)).
 
@@ -15,7 +15,7 @@ Pada sistem yang diamati, terdapat **lima kasir aktif (server)** yang masing-mas
 
 Sistem antrian ini termasuk ke dalam kategori *multi-server queueing system* karena terdapat beberapa server yang bekerja secara bersamaan untuk melayani pelanggan. Dalam teori antrian, sistem ini dimodelkan sebagai **M/M/5**, yang berarti sistem memiliki pola kedatangan acak (*Markovian arrival*), waktu pelayanan acak (*Markovian service time*), dan lima server yang beroperasi paralel. Pada proyek ini, dilakukan observasi langsung di lokasi untuk mencatat data kedatangan pelanggan, waktu mulai pelayanan, dan waktu berakhirnya pelayanan pada pukul **20:15:00 WITA sampai dengan 21:47:17 WITA**.
 
-Tujuan utama dari pemodelan dan simulasi ini adalah untuk menganalisis kinerja sistem antrian kasir Lotte Mart dalam rangka memastikan pelayanan yang efektif dan efisien, memperoleh *insight* serta rekomendasi bagi manajemen dalam meningkatkan efisiensi pelayanan, dan memberikan gambaran realistis mengenai performa operasional guna mengoptimalkan sumber daya yang dimiliki.
+Tujuan utama dari pemodelan dan simulasi ini adalah untuk menganalisis kinerja sistem antrian kasir supermarket dalam rangka memastikan pelayanan yang efektif dan efisien, memperoleh *insight* serta rekomendasi bagi manajemen dalam meningkatkan efisiensi pelayanan, dan memberikan gambaran realistis mengenai performa operasional guna mengoptimalkan sumber daya yang dimiliki.
 
 ## B. Diagram Model dan Penjelasan Model
 
@@ -24,7 +24,7 @@ Berdasarkan karakteristiknya, sistem ini dikategorikan sebagai sistem antrian *m
 2. **M (*Markovian Service*)**: Waktu pelayanan bersifat acak dan mengikuti distribusi Eksponensial, dengan estimasi rata-rata durasi pelayanan **1,864 menit** ($\mu = 0,536339\text{ pelanggan/menit}$ per kasir).
 3. **Angka 5**: Menunjukkan jumlah server atau kasir aktif yang melayani pelanggan secara paralel.
 
-Berikut adalah diagram model sistem antrian Lotte Mart Hypermarket Mall Panakkukang:
+Berikut adalah diagram model sistem antrian kasir supermarket:
 
 
 
@@ -61,10 +61,10 @@ flowchart LR
 
 ### Komponen-Komponen Model Sistem Antrian
 
-- **a. Server (Kasir)**: Dalam model sistem antrian ini, setiap kasir berperan sebagai *server* yang bertugas memberikan layanan kepada pelanggan yang datang untuk melakukan pembayaran. Pada observasi proyek ini, terdapat lima kasir aktif yang berfungsi sebagai lima *server* dalam sistem antrian Lotte Mart.
+- **a. Server (Kasir)**: Dalam model sistem antrian ini, setiap kasir berperan sebagai *server* yang bertugas memberikan layanan kepada pelanggan yang datang untuk melakukan pembayaran. Pada observasi proyek ini, terdapat lima kasir aktif yang berfungsi sebagai lima *server* dalam sistem antrian supermarket.
 - **b. Pelanggan (Obyek)**: Obyek pada sistem ini adalah pelanggan, di mana setiap pelanggan akan dilayani oleh *server* (kasir). Proses dimulai ketika pelanggan menuju area kasir sambil membawa barang belanjaan, memilih salah satu kasir yang tersedia, dan menunggu giliran untuk dilayani. Ketika tiba gilirannya, pelanggan menyerahkan barang belanjaan kepada kasir untuk diproses, lalu meninggalkan area kasir dan keluar dari sistem setelah seluruh transaksi pembayaran selesai.
 - **c. Kedatangan Pelanggan (*Arrival Process*)**: Pelanggan datang ke area kasir secara acak dengan waktu antar kedatangan yang bervariasi. Data kedatangan diperoleh dari hasil observasi langsung di lokasi, di mana setiap waktu kedatangan pelanggan dicatat berdasarkan jam aktual saat pelanggan masuk ke area kasir.
-- **d. Antrian (*Queue*)**: Ketika seluruh kasir sedang sibuk, pelanggan harus menunggu di antrian. Berdasarkan hasil observasi yang dilakukan, sistem antrian di Lotte Mart cenderung terpisah, di mana setiap kasir memiliki baris pelanggannya masing-masing. Antrian yang panjang mengindikasikan pelayanan yang kurang optimal karena mengakibatkan pelanggan harus menunggu lebih lama untuk dilayani, mengganggu kenyamanan, serta menurunkan kepuasan dan citra bisnis ([Syaharani dkk., 2024](https://doi.org/10.37090/indstrk.v8i4.1710)).
+- **d. Antrian (*Queue*)**: Ketika seluruh kasir sedang sibuk, pelanggan harus menunggu di antrian. Berdasarkan hasil observasi yang dilakukan, sistem antrian di supermarket cenderung terpisah, di mana setiap kasir memiliki baris pelanggannya masing-masing. Antrian yang panjang mengindikasikan pelayanan yang kurang optimal karena mengakibatkan pelanggan harus menunggu lebih lama untuk dilayani, mengganggu kenyamanan, serta menurunkan kepuasan dan citra bisnis ([Syaharani dkk., 2024](https://doi.org/10.37090/indstrk.v8i4.1710)).
 - **e. Pelayanan oleh Server (*Service Process*)**: Setiap kasir bertindak sebagai *server* yang memberikan pelayanan kepada pelanggan satu per satu. Proses pelayanan mencakup pemindaian barang, perhitungan total harga, serta proses pembayaran (tunai atau non-tunai). Lama waktu pelayanan berbeda-beda tergantung jumlah dan jenis barang belanjaan pelanggan.
 - **f. Keberangkatan (*Departure*)**: Setelah pelanggan selesai dilayani, mereka meninggalkan area kasir dan keluar dari sistem. Data waktu keberangkatan ini digunakan untuk menghitung waktu total pelanggan berada di dalam sistem, termasuk waktu tunggu dan waktu pelayanan.
 
@@ -91,7 +91,7 @@ Untuk perhitungan distribusi waktu tunggu dan waktu pelayanan pada `Distribusi_D
 
 ## D. Rata-Rata Waktu Tunggu dan Pelayanan Objek dalam Sistem
 
-Pada sistem antrian pelayanan pelanggan di Lotte Mart Mall Panakkukang, waktu tunggu dan waktu pelayanan merupakan dua metrik utama yang diperlukan untuk mengevaluasi efisiensi sistem antrian dan kinerja pelayanan:
+Pada sistem antrian pelayanan pelanggan di supermarket, waktu tunggu dan waktu pelayanan merupakan dua metrik utama yang diperlukan untuk mengevaluasi efisiensi sistem antrian dan kinerja pelayanan:
 - **Rata-rata waktu tunggu** menunjukkan rata-rata waktu menunggu pelanggan pada antrian sebelum dilayani oleh kasir.
 - **Rata-rata waktu pelayanan** menunjukkan rata-rata waktu yang dibutuhkan oleh kasir untuk melayani seorang pelanggan hingga transaksi berhasil dilakukan.
 
@@ -107,7 +107,7 @@ Berdasarkan hasil perhitungan menggunakan Python (`pandas`) terhadap **161 pelan
 
 ## E. Insight dan Rekomendasi dari Pemodelan yang Telah Dibuat
 
-Simulasi kejadian diskrit (*Discrete-Event Simulation*) dijalankan pada `G1_simulation_lottemart.ipynb` menggunakan `SimPy` untuk membandingkan kondisi nyata (*Real Condition*) dengan tiga skenario eksperimen:
+Simulasi kejadian diskrit (*Discrete-Event Simulation*) dijalankan pada `G1_simulation_supermarket.ipynb` menggunakan `SimPy` untuk membandingkan kondisi nyata (*Real Condition*) dengan tiga skenario eksperimen:
 
 | Experiment | Scenario (Number of Cashier) | Average Utilization (%) | Average Time in System (minutes) | Average Waiting Time (minutes) | Total Work Item Completed |
 | :--- | :--- | ---: | ---: | ---: | ---: |
@@ -140,7 +140,7 @@ Dengan penerapan *single queue* (satu antrian terpusat untuk seluruh 5 kasir), r
 ## Struktur File Repositori
 
 ```text
-├── G1_simulation_lottemart.ipynb         # Notebook utama simulasi DES (SimPy), animasi MP4, dan 3 skenario eksperimen
+├── G1_simulation_supermarket.ipynb         # Notebook utama simulasi DES (SimPy), animasi MP4, dan 3 skenario eksperimen
 ├── Distribusi_Data.ipynb                 # Notebook pengolahan waktu tunggu/pelayanan dan visualisasi histogram Sturges
 ├── HASIL_DATA_PENGAMATAN_DES.csv         # Dataset observasi lapangan (161 pelanggan, 5 kasir, 20:15 - 21:47 WITA)
 ├── diagram_model.png                     # Gambar 1: Diagram Model Sistem Antrian M/M/5
@@ -161,9 +161,9 @@ Dengan penerapan *single queue* (satu antrian terpusat untuk seluruh 5 kasir), r
    - Pastikan path file CSV mengarah ke dataset observasi (`HASIL_DATA_PENGAMATAN_DES.csv` atau `data_antrian.csv`).
    - Jalankan seluruh sel untuk menghasilkan `data_antrian_hasil.csv`, statistik interval kelas, serta histogram distribusi waktu tunggu dan pelayanan.
 
-3. **Menjalankan Simulasi & Eksperimen (`G1_simulation_lottemart.ipynb`)**:
+3. **Menjalankan Simulasi & Eksperimen (`G1_simulation_supermarket.ipynb`)**:
    - Pastikan variabel `DATA_CSV` mengarah ke `HASIL_DATA_PENGAMATAN_DES.csv`.
-   - Jalankan seluruh sel untuk mengeksekusi simulasi *real-data replay*, membuat video animasi `real_simulation_lottemart_panakukang_queue.mp4`, dan menjalankan ketiga skenario eksperimen (`DES_experiment_results_all.csv`).
+   - Jalankan seluruh sel untuk mengeksekusi simulasi *real-data replay*, membuat video animasi `real_simulation_supermarket_queue.mp4`, dan menjalankan ketiga skenario eksperimen (`DES_experiment_results_all.csv`).
 
   
 - **Daftar Pustaka**:
